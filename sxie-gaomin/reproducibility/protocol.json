@@ -22,45 +22,9 @@
     "hamming_distance_lte": 10,
     "components": "undirected; transitive closure"
   },
-  "dataset_image_counts": {
-    "visdrone": {
-      "unit": "image",
-      "manuscript": [
-        6903,
-        863,
-        863
-      ],
-      "reference": [
-        6903,
-        863,
-        863
-      ]
-    },
-    "uavdt": {
-      "unit": "sequence_id",
-      "manuscript": [
-        62375,
-        7612,
-        7832
-      ],
-      "reference": [
-        63292,
-        9003,
-        5524
-      ]
-    },
-    "codrone": {
-      "unit": "group_id",
-      "manuscript": [
-        8021,
-        987,
-        996
-      ],
-      "reference": [
-        8002,
-        1002,
-        1000
-      ]
-    }
+  "split_unit_by_dataset": {
+    "visdrone": "image",
+    "uavdt": "sequence_id",
+    "codrone": "group_id"
   }
 }
