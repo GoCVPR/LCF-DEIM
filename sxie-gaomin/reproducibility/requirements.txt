@@ -1,0 +1,6 @@
+# Tested with CPython 3.8.20
+ImageHash==4.3.2
+numpy==1.24.4
+Pillow==10.4.0
+PyWavelets==1.4.1
+scipy==1.10.1
