@@ -1,17 +1,15 @@
-# LCF-DEIM
+# LCF-DEIM 数据划分与复现材料
 
-LCF-DEIM 自定义数据划分的参考清单与可运行脚本。完整数据包包含 VisDrone、UAVDT、CODrone 三套数据集的九份训练、验证和测试清单，每份提供 CSV 和 TXT 两种格式，同时提供逐图序列或相似组信息、CODrone 的 64 位感知哈希、数据来源、运行说明和 SHA-256 校验值。
+这里提供 VisDrone、UAVDT 和 CODrone 的九份训练、验证和测试参考清单，每份都有 CSV 和 TXT 两种格式。UAVDT 清单包含逐图序列编号，CODrone 清单包含逐图 64 位感知哈希和相似组编号。
 
-**[下载完整复现材料 / Download reproducibility package](./LCF-DEIM-reproducibility.zip)**
+**[浏览九份划分清单](./reproducibility/splits) · [查看三份完整 Python 脚本](./reproducibility/scripts) · [下载完整仓库 ZIP](https://github.com/GoCVPR/LCF-DEIM/archive/refs/heads/main.zip)**
 
-解压后进入 `reproducibility/`，按其中的 `README.md` 运行。数据划分种子为 0。VisDrone 以单张静态图像为单位，UAVDT 按完整视频序列分配，CODrone 按 64 位感知哈希和汉明距离 ≤10 形成的相似组分配。
-
-| 训练 / 验证 / 测试图像数 | 第 3.1 节报告的实验划分 | 此处发布的参考清单 |
+| 数据集 | 第 3.1 节报告的实验划分（训练 / 验证 / 测试） | 此处发布的参考清单（训练 / 验证 / 测试） |
 |---|---:|---:|
 | VisDrone | 6,903 / 863 / 863 | 6,903 / 863 / 863 |
 | UAVDT | 62,375 / 7,612 / 7,832 | 63,292 / 9,003 / 5,524 |
 | CODrone | 8,021 / 987 / 996 | 8,002 / 1,002 / 1,000 |
 
-公开清单用于复现上表右列的参考划分。论文检测指标对应第 3.1 节报告的实验划分。采用本清单开展比较时，应使用同一训练、验证和测试集，并注明采用自定义划分。
+完整运行说明和依赖版本见 [reproducibility/README.md](./reproducibility/README.md)。数据划分随机种子为 0。VisDrone 按单张图像划分，UAVDT 按完整视频序列划分，CODrone 按基于汉明距离 ≤10 的感知哈希相似组划分。论文检测指标对应第 3.1 节报告的实验划分。新实验应注明所用的具体清单。
 
-The archive contains all nine reference split lists, the image inventory, per-image CODrone perceptual hashes and group IDs, runnable scripts, pinned dependencies, source provenance, and checksums. The reported paper metrics refer to the experimental splits in Section 3.1; the regenerated lists are separately identified above.
+The repository contains all nine reference image splits, per-image sequence or perceptual group identifiers, CODrone hashes, runnable scripts, source provenance and SHA-256 checksums. For command-line examples, open the [reproducibility guide](./reproducibility/README.md).
