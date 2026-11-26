@@ -1,0 +1,66 @@
+{
+  "split_seed": 0,
+  "reference_runtime": "CPython 3.8.20",
+  "ratios_train_val_test": [
+    0.8,
+    0.1,
+    0.1
+  ],
+  "unit_order": "lexical ascending on image, sequence_id, or group_id",
+  "shuffle": "fresh random.Random(0).shuffle per dataset",
+  "cumulative_cutoffs": [
+    "floor(8*N/10)",
+    "floor(9*N/10)"
+  ],
+  "additional_training_seeds_on_fixed_split": [
+    1,
+    2
+  ],
+  "codrone_hash": {
+    "implementation": "ImageHash 4.3.2 phash",
+    "bits": 64,
+    "hamming_distance_lte": 10,
+    "components": "undirected; transitive closure"
+  },
+  "dataset_image_counts": {
+    "visdrone": {
+      "unit": "image",
+      "manuscript": [
+        6903,
+        863,
+        863
+      ],
+      "reference": [
+        6903,
+        863,
+        863
+      ]
+    },
+    "uavdt": {
+      "unit": "sequence_id",
+      "manuscript": [
+        62375,
+        7612,
+        7832
+      ],
+      "reference": [
+        63292,
+        9003,
+        5524
+      ]
+    },
+    "codrone": {
+      "unit": "group_id",
+      "manuscript": [
+        8021,
+        987,
+        996
+      ],
+      "reference": [
+        8002,
+        1002,
+        1000
+      ]
+    }
+  }
+}
