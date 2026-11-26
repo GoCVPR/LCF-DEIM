@@ -4,12 +4,8 @@
 
 **[浏览九份划分清单](./reproducibility/splits) · [查看三份完整 Python 脚本](./reproducibility/scripts) · [下载完整仓库 ZIP](https://github.com/GoCVPR/LCF-DEIM/archive/refs/heads/main.zip)**
 
-| 数据集 | 第 3.1 节报告的实验划分（训练 / 验证 / 测试） | 此处发布的参考清单（训练 / 验证 / 测试） |
-|---|---:|---:|
-| VisDrone | 6,903 / 863 / 863 | 6,903 / 863 / 863 |
-| UAVDT | 62,375 / 7,612 / 7,832 | 63,292 / 9,003 / 5,524 |
-| CODrone | 8,021 / 987 / 996 | 8,002 / 1,002 / 1,000 |
+数据划分采用固定随机种子 0。VisDrone 以单张图像为单位，UAVDT 以完整视频序列为单位，CODrone 以感知哈希相似组为单位。CODrone 的相似组由汉明距离不超过 10 的图像对通过连通关系构成。各图像的子集归属见相应清单。
 
-完整运行说明和依赖版本见 [reproducibility/README.md](./reproducibility/README.md)。数据划分随机种子为 0。VisDrone 按单张图像划分，UAVDT 按完整视频序列划分，CODrone 按基于汉明距离 ≤10 的感知哈希相似组划分。论文检测指标对应第 3.1 节报告的实验划分。新实验应注明所用的具体清单。
+公开清单供按第 3.1 节的划分方法开展复现实验。论文检测指标对应文中报告的实验划分。依赖版本和运行命令见 [复现指南](./reproducibility/README.md)。
 
 The repository contains all nine reference image splits, per-image sequence or perceptual group identifiers, CODrone hashes, runnable scripts, source provenance and SHA-256 checksums. For command-line examples, open the [reproducibility guide](./reproducibility/README.md).
