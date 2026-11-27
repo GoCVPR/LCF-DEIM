@@ -1,4 +1,4 @@
-"""Create the three image lists for one dataset (CPython 3.8.20)."""
+"""Generate count-matched reference splits from the published inventories (CPython 3.8)."""
 import argparse
 import csv
 import random
@@ -13,6 +13,46 @@ SPEC = {
     "uavdt": ("sequence_id", 77819, ["sequence_id"]),
     "codrone": ("group_id", 10004, ["group_id", "phash64"]),
 }
+
+IMAGE_TARGETS = {
+    "visdrone": (6903, 863, 863),
+    "uavdt": (62375, 7612, 7832),
+    "codrone": (8021, 987, 996),
+}
+# (sequence, seeded subset, reference subset), for this inventory only.
+UAVDT_MOVES = (
+    ("M1304", "train", "test"), ("S0306", "train", "val"),
+    ("M1003", "val", "test"), ("M1007", "val", "train"),
+    ("M1004", "test", "train"), ("S0308", "test", "val"),
+)
+
+
+def match_image_counts(dataset, assign, sizes):
+    """Reassign whole units for this release while preserving seed-0 unit counts."""
+    targets = dict(zip(SPLITS, IMAGE_TARGETS[dataset]))
+    unit_counts = Counter(assign.values())
+    if dataset == "uavdt":
+        for sequence, source, destination in UAVDT_MOVES:
+            if assign.get(sequence) != source:
+                raise ValueError("Unexpected starting subset for " + sequence)
+            assign[sequence] = destination
+    elif dataset == "codrone":
+        # Dictionary order is the shuffled seed-0 unit order.
+        for source in ("val", "test"):
+            current = sum(sizes[u] for u in assign if assign[u] == source)
+            excess = current - targets[source]
+            # Each pair exchanged reduces this subset by exactly one image.
+            pairs = [u for u in assign if assign[u] == source and sizes[u] == 2]
+            singles = [u for u in assign if assign[u] == "train" and sizes[u] == 1]
+            if not 0 <= excess <= min(len(pairs), len(singles)):
+                raise ValueError("CODrone group sizes differ from the release inventory")
+            for pair, single in zip(pairs[:excess], singles[:excess]):
+                assign[pair], assign[single] = "train", source
+    image_counts = Counter()
+    for unit_id, subset in assign.items():
+        image_counts[subset] += sizes[unit_id]
+    if image_counts != targets or Counter(assign.values()) != unit_counts:
+        raise ValueError("Reference image or unit counts do not match")
 
 
 def make_splits(dataset, inventory, out):
@@ -42,6 +82,7 @@ def make_splits(dataset, inventory, out):
     a, b = n * 8 // 10, n * 9 // 10
     names = ["train"] * a + ["val"] * (b - a) + ["test"] * (n - b)
     assign = dict(zip(units, names))
+    match_image_counts(dataset, assign, Counter(row[unit] for row in rows))
     rows.sort(key=lambda row: row["image"])
     for row in rows:
         row["split"] = assign[row[unit]]

@@ -1,16 +1,16 @@
 # LCF-DEIM 数据划分与复现材料
 
-本目录提供 VisDrone、UAVDT 和 CODrone 的训练、验证和测试参考清单，以及生成清单的完整程序。参考实现按论文第 3.1 节的 8∶1∶1 比例划分，数据划分种子为 0。VisDrone 按单张有标注图像划分，UAVDT 按完整视频序列划分，CODrone 按感知哈希相似组划分。论文检测指标对应文中报告的实验划分。
+本目录提供 VisDrone、UAVDT 和 CODrone 的训练、验证和测试参考清单，以及生成清单的完整程序。本版按论文报告的训练集、验证集和测试集图像数重新生成参考清单。当前缺少可逐项核对的原始训练清单，因此各子集规模相符，逐图归属与原训练是否一致仍待核验。 参考实现以 8∶1∶1 为划分单元的目标比例，初分种子为 0。VisDrone 按单张有标注图像划分，UAVDT 按完整视频序列划分，CODrone 按感知哈希相似组划分。
 
 ## 获取具体清单
 
-每个子集提供一份 CSV 和一份 TXT。CSV 的 `image` 列保存数据集根目录下的相对路径，`split` 列保存实际子集。文件路径中原有的 train、val 或 test 是上游来源目录。TXT 每行对应一张图像。
+下表的数字为 CSV 中的图像行数。每个子集提供一份 CSV 和一份 TXT。CSV 的 `image` 列保存数据集根目录下的相对路径，`split` 列保存实际子集。文件路径中原有的 train、val 或 test 是上游来源目录。TXT 每行对应一张图像。
 
 | 数据集 | 训练集 | 验证集 | 测试集 | CSV 中的附加信息 |
 |---|---|---|---|---|
-| VisDrone | [train.csv](splits/visdrone/train.csv) | [val.csv](splits/visdrone/val.csv) | [test.csv](splits/visdrone/test.csv) | 单张图像对应一行 |
-| UAVDT | [train.csv](splits/uavdt/train.csv) | [val.csv](splits/uavdt/val.csv) | [test.csv](splits/uavdt/test.csv) | 序列编号 `sequence_id` |
-| CODrone | [train.csv](splits/codrone/train.csv) | [val.csv](splits/codrone/val.csv) | [test.csv](splits/codrone/test.csv) | 相似组 `group_id`、16 位十六进制 `phash64` |
+| VisDrone | [6,903](splits/visdrone/train.csv) | [863](splits/visdrone/val.csv) | [863](splits/visdrone/test.csv) | 单张图像对应一行 |
+| UAVDT | [62,375](splits/uavdt/train.csv) | [7,612](splits/uavdt/val.csv) | [7,832](splits/uavdt/test.csv) | 序列编号 `sequence_id` |
+| CODrone | [8,021](splits/codrone/train.csv) | [987](splits/codrone/val.csv) | [996](splits/codrone/test.csv) | 相似组 `group_id`、16 位十六进制 `phash64` |
 
 - 数据集版本、官方来源和原始图像索引见 [DATA_SOURCES.md](DATA_SOURCES.md)。
 - 逐图哈希和分组结果见 [groups/codrone.csv](groups/codrone.csv)。组编号从 G000001 开始，同组图像完整归入一个子集。
@@ -26,7 +26,21 @@ python scripts/make_splits.py uavdt inventories/uavdt.csv out/uavdt
 python scripts/make_splits.py codrone groups/codrone.csv out/codrone
 ```
 
-程序按字符串升序排列图像路径、序列编号或组编号。三个数据集各自使用新建的 `random.Random(0)` 打乱划分单元。对 N 个单元，以 ⌊8N/10⌋、⌊9N/10⌋ 为累计切点，再展开为逐图清单。论文表 2 和表 3 中用于重复训练的种子 1、2 不参与数据划分。
+三个数据集分别对按字符串升序排列的图像路径、序列编号或组编号调用 `random.Random(0).shuffle`。对于 N 个划分单元，取 ⌊8N/10⌋、⌊9N/10⌋ 为累计切点，得到初始子集。论文表 2 和表 3 中用于重复训练的种子 1、2 不参与数据划分。
+
+| 数据集 | 种子 0 初分图像数（训练／验证／测试） | 本版图像数（训练／验证／测试） | 两版各子集单元数（训练／验证／测试） |
+|---|---|---|---|
+| VisDrone | 6,903／863／863 | 6,903／863／863 | 6,903／863／863 张图像 |
+| UAVDT | 63,292／9,003／5,524 | 62,375／7,612／7,832 | 80／10／10 个序列 |
+| CODrone | 8,002／1,002／1,000 | 8,021／987／996 | 7,898／987／988 个相似组 |
+
+初分清单可在[上一版归档](https://github.com/GoCVPR/LCF-DEIM/tree/51003459d90c8547dcc7c66f8866a2344b399586/sxie-gaomin/reproducibility/splits)中逐图对照。为了使本版各子集图像数达到论文报告值，程序在初分后执行以下步骤。
+
+- VisDrone 直接输出初分结果。
+- UAVDT 使用 `make_splits.py` 的固定序列转移表。M1304 从训练集移至测试集，S0306 从训练集移至验证集，M1003 从验证集移至测试集，M1007 从验证集移至训练集，M1004 从测试集移至训练集，S0308 从测试集移至验证集。六个序列共含 4,438 张图像。选取方案时优先减少转移序列数，其次减少转移图像数。序列编号、初分归属和序列长度决定所选方案。
+- CODrone 按种子 0 打乱后的组顺序，从验证集取前 15 个双图组，与训练集前 15 个单图组交换，再从测试集取前 4 个双图组，与训练集当时的前 4 个单图组交换。共有 38 个组、57 张图像改变子集归属。
+
+程序最后校验各子集的图像数和单元数，并按图像路径排序写出 CSV 与 TXT。以上调整仅使用单元编号、初分归属和图像数量。
 
 ## 从官方 CODrone 原图复算感知哈希
 

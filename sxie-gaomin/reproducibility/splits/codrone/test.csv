@@ -231,7 +231,6 @@ test/images/night_citongbridge_60m_90c_frame_4800.jpg,test,G002133,cc93e3333361c
 test/images/night_city_road_100m_30c_3_frame_2200.jpg,test,G002134,cc27b3f103627f42
 test/images/night_city_road_100m_90c_2_frame_3400.jpg,test,G002139,9972a4d999999966
 test/images/night_city_road_30m_90c_3_frame_2300.jpg,test,G002164,c1d42c7c2f02dd37
-test/images/night_city_road_30m_90c_3_frame_2800.jpg,test,G002165,df1861ef20fb9904
 test/images/night_city_road_30m_90c_3_frame_400.jpg,test,G002167,97e56897694a4ac5
 test/images/night_city_road_30m_90c_3_frame_4300.jpg,test,G002169,8c95a695eb954969
 test/images/night_city_road_30m_90c_frame_1200.jpg,test,G002172,c1309d3e3ec1e4b3
@@ -249,6 +248,7 @@ test/images/night_guanyinpark_100m_30c_frame_1050.jpg,test,G002290,9c378f6d34c83
 test/images/night_guanyinpark_100m_90c_3_frame_750.jpg,test,G002301,c60de1e730783dd4
 test/images/night_guanyinpark_100m_90c_frame_2550.jpg,test,G002305,9531fa837e49b624
 test/images/night_guanyinpark_30m_30c_2_frame_2250.jpg,test,G002309,c19ff8424f6c1cc5
+test/images/night_guanyinpark_30m_30c_2_frame_2700.jpg,test,G002310,9c6ec6934bad84d4
 test/images/night_guanyinpark_30m_90c_2_frame_2100.jpg,test,G002325,c00fe0e19e7b33f0
 test/images/night_guanyinpark_60m_30c_2_frame_3150.jpg,test,G002332,cc3e71873c6a0aab
 test/images/night_guanyinpark_60m_30c_2_frame_450.jpg,test,G002335,926d36436c9a616f
@@ -289,6 +289,7 @@ test/images/night_milanroad_100m_30c_frame_4350.jpg,test,G002672,92649d7324c873b
 test/images/night_milanroad_100m_90c_frame_3450.jpg,test,G002680,99cb6d539cc92788
 test/images/night_milanroad_30m_30c_frame_1950.jpg,test,G002684,94522b5935bc5aa7
 test/images/night_milanroad_30m_30c_frame_2550.jpg,test,G002685,91d66aa96d9f8485
+test/images/night_milanroad_30m_90c_frame_150.jpg,test,G002692,f9f9f980790e0e21
 test/images/night_pujiang_60m_30c_frame_2800.jpg,test,G002715,9436676c99037bf0
 test/images/night_qiongtou_100m_90c_frame_4650.jpg,test,G002729,9acda49692666e96
 test/images/night_qiongtou_100m_90c_frame_5550.jpg,test,G002730,9998b364f7229999
@@ -297,7 +298,6 @@ test/images/night_ruijingpark_60m_30c_frame_600.jpg,test,G002776,c51a4b46ade4565
 test/images/night_seaside_60m_90c_frame_0.jpg,test,G002794,e7148791ece39265
 test/images/night_wandaguangchang_100m_30c_2_frame_5250.jpg,test,G002808,996ce4a6e3259b94
 test/images/night_wandaguangchang_60m_30c_4_frame_2250.jpg,test,G002828,c3dec1e761e16624
-test/images/night_wandaguangchang_60m_90c_frame_2400.jpg,test,G002841,93ca6c9999656c66
 test/images/night_xidongroad_60m_90c_2_frame_1200.jpg,test,G002863,d99b329a4c615b65
 test/images/night_xidongroad_60m_90c_frame_0.jpg,test,G002865,d9f3c664d513061d
 test/images/night_xijie_60m_30c_3_frame_450.jpg,test,G002897,ccf67e7878d8b004
@@ -312,9 +312,7 @@ train/images/chenhuachengpark_day_60m_30c_frame_1350.jpg,test,G003013,d2c969964b
 train/images/chenhuachengpark_day_60m_30c_frame_1650.jpg,test,G003014,d3e9f2e8a4e4a1a2
 train/images/chenhuachengpark_day_60m_30c_frame_2250.jpg,test,G003016,8df5357969d25a04
 train/images/chenhuachengpark_day_60m_90c_3_frame_1950.jpg,test,G003031,92d66e929260f59e
-train/images/chenhuachengpark_night_100m_90c_1_frame_900.jpg,test,G002841,9a496c9b98676666
 train/images/chenhuachengpark_night_100m_90c_2_frame_0.jpg,test,G003038,98d1716f6f2385c4
-train/images/chenhuachengpark_night_100m_90c_2_frame_1350.jpg,test,G003039,9b329992996d656c
 train/images/chenhuachengpark_night_30m_30c_3_frame_3600.jpg,test,G003060,855a79236a376e64
 train/images/chenhuachengpark_night_30m_30c_3_frame_3750.jpg,test,G003061,845a316f66676971
 train/images/chenhuachengpark_night_30m_90c_1_frame_150.jpg,test,G003064,ce18c7cd07e10fe1
@@ -340,8 +338,6 @@ train/images/day_chaoxipark_60m_30c_3_frame_3450.jpg,test,G003245,91c40585fc7aeb
 train/images/day_chaoxipark_60m_90c_1_frame_3900.jpg,test,G003253,8d8cd9271989df31
 train/images/day_chaoxipark_60m_90c_3_frame_0.jpg,test,G003267,cc890737fea66780
 train/images/day_city_road_100m_30c_frame_1700.jpg,test,G003297,b3c14f5e3cf2a0a1
-train/images/day_city_road_100m_90c_frame_0.jpg,test,G003304,e71d0f0f82f7c007
-train/images/day_city_road_100m_90c_frame_100.jpg,test,G003304,e71d0f0782f7c017
 train/images/day_city_road_100m_90c_frame_1000.jpg,test,G003305,b1521b94b1e93973
 train/images/day_city_road_100m_90c_frame_2200.jpg,test,G003310,ab78e2a73508bb29
 train/images/day_city_road_30m_30c_3_frame_1400.jpg,test,G003330,e2d1c7cec8d8cc46
@@ -362,6 +358,7 @@ train/images/day_cityroad_60m_90c_frame_2200.jpg,test,G003423,811f0f240af17ff4
 train/images/day_dadengdao_100m_30c_frame_4500.jpg,test,G003434,c54eda65e435f00e
 train/images/day_dadengdao_100m_90c_frame_900.jpg,test,G003446,8d404ebc6935f8ce
 train/images/day_dadengdao_30m_30c_1_frame_300.jpg,test,G003451,cc36f381e9136e46
+train/images/day_dadengdao_60m_30c_1_frame_0.jpg,test,G003480,a6d19eaca11b309f
 train/images/day_dadengdao_60m_90c_1_frame_2400.jpg,test,G003498,e366d878a4ebc407
 train/images/day_dadengdao_60m_90c_1_frame_2550.jpg,test,G003499,e6d8970ab88b393a
 train/images/day_feitianyingbin_100m_30c_frame_1950.jpg,test,G003526,cbb0c3dfe0f12815
@@ -667,7 +664,6 @@ train/images/night_city_road_100m_30c_2_frame_500.jpg,test,G006534,8c7bb6c222781
 train/images/night_city_road_100m_30c_3_frame_1000.jpg,test,G006535,db3266c9e521cd62
 train/images/night_city_road_30m_30c_2_frame_3700.jpg,test,G006574,de6119972133de4c
 train/images/night_city_road_30m_30c_frame_2000.jpg,test,G006584,8e505809218f7ffb
-train/images/night_city_road_30m_90c_2_frame_2800.jpg,test,G002165,df1861ef20fb9904
 train/images/night_city_road_30m_90c_2_frame_3200.jpg,test,G006591,95906ea56bce52a5
 train/images/night_city_road_30m_90c_2_frame_4300.jpg,test,G002169,8c95a695eb954969
 train/images/night_city_road_30m_90c_3_frame_3200.jpg,test,G006591,95906ea56bce52a5
@@ -766,6 +762,7 @@ train/images/night_qiongtou_60m_30c_2_frame_150.jpg,test,G007467,8c2c7555aab9575
 train/images/night_ruijingpark_30m_30c_2_frame_1950.jpg,test,G007504,d94cacc5bc780b39
 train/images/night_ruijingpark_30m_30c_2_frame_900.jpg,test,G007509,d8262de1331fe686
 train/images/night_ruijingpark_30m_30c_3_frame_300.jpg,test,G007511,c65e491db46023fe
+train/images/night_ruijingpark_30m_30c_3_frame_450.jpg,test,G007512,855219ad35707ed9
 train/images/night_ruijingpark_30m_30c_frame_1500.jpg,test,G007515,9c24994c5bc9ccf3
 train/images/night_ruijingpark_30m_30c_frame_750.jpg,test,G007519,cdb820133bcee971
 train/images/night_ruijingpark_60m_30c_frame_750.jpg,test,G007546,ce92c1fcc40c3af5
@@ -949,7 +946,6 @@ val/images/night_cityroad_100m_90c_frame_5800.jpg,test,G009377,b45269aa4ba8f49d
 val/images/night_cityroad_60m_90c_2_frame_2000.jpg,test,G009383,cff3805cbc5a1cc2
 val/images/night_countryroad_30m_30c_frame_300.jpg,test,G009392,c747719858dabc61
 val/images/night_dadengdao_100m_90c_frame_1800.jpg,test,G002282,9964336466b3d999
-val/images/night_dadengdao_100m_90c_frame_2550.jpg,test,G003039,9bb29b929b666464
 val/images/night_dadengdao_30m_30c_frame_4050.jpg,test,G009403,916b64b64d6433ea
 val/images/night_guanyinpark_30m_30c_2_frame_1500.jpg,test,G009432,c78e38a7b8a36631
 val/images/night_guanyinpark_30m_30c_3_frame_0.jpg,test,G009434,8c5760a6d61b7b26
