@@ -26,5 +26,66 @@
     "visdrone": "image",
     "uavdt": "sequence_id",
     "codrone": "group_id"
+  },
+  "reference_release": {
+    "basis_commit": "51003459d90c8547dcc7c66f8866a2344b399586",
+    "purpose": "count-matched reference reconstruction",
+    "original_training_assignments_verified": false,
+    "seeded_image_counts_train_val_test": {
+      "visdrone": [
+        6903,
+        863,
+        863
+      ],
+      "uavdt": [
+        63292,
+        9003,
+        5524
+      ],
+      "codrone": [
+        8002,
+        1002,
+        1000
+      ]
+    },
+    "reference_image_counts_train_val_test": {
+      "visdrone": [
+        6903,
+        863,
+        863
+      ],
+      "uavdt": [
+        62375,
+        7612,
+        7832
+      ],
+      "codrone": [
+        8021,
+        987,
+        996
+      ]
+    },
+    "unit_counts_train_val_test": {
+      "visdrone": [
+        6903,
+        863,
+        863
+      ],
+      "uavdt": [
+        80,
+        10,
+        10
+      ],
+      "codrone": [
+        7898,
+        987,
+        988
+      ]
+    },
+    "post_allocation_rules": {
+      "visdrone": "use seeded assignment directly",
+      "uavdt": "apply the six whole-sequence transfers in the UAVDT_MOVES constant of scripts/make_splits.py",
+      "codrone": "in seeded unit order, swap the first 15 two-image validation groups and then the first 4 two-image test groups with the same number of first available one-image training groups"
+    }
   }
 }
