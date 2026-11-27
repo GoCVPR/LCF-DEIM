@@ -1,4 +1,4 @@
-"""Generate count-matched reference splits from the published inventories (CPython 3.8)."""
+"""Generate train, validation, and test manifests from dataset inventories (CPython 3.8)."""
 import argparse
 import csv
 import random
