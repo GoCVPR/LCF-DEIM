@@ -2,7 +2,7 @@
 
 `inventories/` 中的路径均以相应数据集的原始解压目录为根目录。路径内的 `train`、`val`、`test` 表示图像在数据发布包中的位置。此次参考划分的子集归属见 `splits/<数据集>/{train,val,test}.csv` 的 `split` 列。同目录 TXT 文件每行列出一个图像路径；CSV 保留必要的序列或相似组信息。
 
-图像索引和 CODrone 分组表沿用[原参考版本](https://github.com/GoCVPR/LCF-DEIM/tree/51003459d90c8547dcc7c66f8866a2344b399586/sxie-gaomin/reproducibility)。本版按论文报告的训练集、验证集和测试集图像数重新生成参考清单。当前缺少可逐项核对的原始训练清单，因此各子集规模相符，逐图归属与原训练是否一致仍待核验。 逐图数量调整规则见[复现指南](README.md)。
+图像索引和 CODrone 分组表沿用[原参考版本](https://github.com/GoCVPR/LCF-DEIM/tree/51003459d90c8547dcc7c66f8866a2344b399586/sxie-gaomin/reproducibility)。各数据集的划分规则见[复现指南](README.md)。
 
 ## VisDrone
 

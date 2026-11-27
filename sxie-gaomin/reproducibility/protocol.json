@@ -29,8 +29,7 @@
   },
   "reference_release": {
     "basis_commit": "51003459d90c8547dcc7c66f8866a2344b399586",
-    "purpose": "count-matched reference reconstruction",
-    "original_training_assignments_verified": false,
+    "purpose": "generate train, validation, and test manifests",
     "seeded_image_counts_train_val_test": {
       "visdrone": [
         6903,
